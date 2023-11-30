@@ -1,4 +1,4 @@
-package AhorcadoTest;
+package ahorcado.juegoahorcado;
 
 import ahorcado.juegoahorcado.Ahorcado;
 import org.junit.Test;
