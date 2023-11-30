@@ -1,6 +1,5 @@
 package ahorcado.juegoahorcado;
 
-import ahorcado.juegoahorcado.Ahorcado;
 import org.junit.Test;
 import static org.junit.Assert.*;
 /**
