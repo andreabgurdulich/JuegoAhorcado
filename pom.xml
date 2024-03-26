@@ -60,30 +60,36 @@
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
+	<properties>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+	</properties>
 	<build>
-    <resources>
-        <resource>
-            <directory>src/main/resources</directory>
-            <includes>
-                <include>**/*.properties</include>
-                <!-- Agrega cualquier otro tipo de archivo que necesites aquí -->
-            </includes>
-        </resource>
-    </resources>
-       <plugins>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-war-plugin</artifactId>
-            <version>3.2.3</version>
-            <configuration>
-                <webResources>
-                    <resource>
-                        <directory>src/main/resources</directory>
-                        <targetPath>WEB-INF/classes</targetPath>
-                    </resource>
-                </webResources>
-            </configuration>
-        </plugin>
-    </plugins>
-</build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*.properties</include>
+					<!-- Agrega cualquier otro tipo de archivo que necesites
+					aquí -->
+				</includes>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.2.3</version>
+				<configuration>
+					<webResources>
+						<resource>
+							<directory>src/main/resources</directory>
+							<targetPath>WEB-INF/classes</targetPath>
+						</resource>
+					</webResources>
+				</configuration>
+			</plugin>
+		</plugins>
+
+	</build>
 </project>
