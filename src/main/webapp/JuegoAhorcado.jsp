@@ -11,7 +11,7 @@
     <title>Ahorcado</title>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 </head>
-<body>
+<body onload="actualizarImagenAhorcado()">
     <div class="container">
         <h1 class="text-center">Ahorcado</h1>
 
@@ -28,10 +28,7 @@
                 <button class="btn btn-info" onclick="reset()">Jugar de nuevo</button>
             </div>
         <% } else { %>
-            <div class="float-right">
-                Errores: <span id='errores'>${ahorcado.intentosIncorrectos}</span> de
-                <span id='maxIntentos'>${ahorcado.maxIntentosIncorrectos}</span>
-            </div>
+            <div class="float-right">Errores: <span id='errores'>${ahorcado.intentosIncorrectos}</span> de <span id='maxIntentos'>${ahorcado.maxIntentosIncorrectos}</span></div>
             <div class="text-center">
                 <img alt="ahorcado" src="assets/images/0.jpg" id="imgAhorcado">
                 <p>Adivina la palabra:</p>
@@ -50,11 +47,7 @@
                         String letraStr = Character.toString(letra);
                         boolean letraSeleccionada = letrasSeleccionadas != null && letrasSeleccionadas.contains(letra);
                     %>
-                    <button type="submit" name="letra" value="<%=letra%>"
-                        class="btn btn-lg btn-primary m-2"
-                        <%= letraSeleccionada ? "disabled" : "" %>>
-                        <%= letra %>
-                    </button>
+                    <button type="submit" name="letra" value="<%=letra%>" class="btn btn-lg btn-primary m-2" <%= letraSeleccionada ? "disabled" : "" %>> <%= letra %></button>
                     <% } %>
                 </form>
                 <button class="btn btn-info" onclick="reset()">Reiniciar</button>
@@ -67,6 +60,12 @@
             window.location.href = "<%= request.getContextPath() %>/JuegoAhorcadoServlet?reset=true";
         }
     </script>
-    
+    <script>
+    function actualizarImagenAhorcado() {
+        var imgAhorcado = document.getElementById("imgAhorcado");
+        var errores = ${ahorcado.intentosIncorrectos}; // Acceder al atributo de la variable ahorcado
+        imgAhorcado.src = "assets/images/" + errores + ".jpg";
+    }
+        </script>
 </body>
 </html>
