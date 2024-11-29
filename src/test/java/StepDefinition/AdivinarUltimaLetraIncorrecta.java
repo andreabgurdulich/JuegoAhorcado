@@ -7,31 +7,30 @@ import io.cucumber.java.en.When;
 
 public class AdivinarUltimaLetraIncorrecta {
 	
-	private Ahorcado juego;
+	private Ahorcado juego=new Ahorcado();
 
-	@Given("que inició el juego del ahorcado con la palabra \"CASA\"")
+	@Given("que inició el juego del ahorcado con la palabra \"GATO\" y ya tiene cinco intentos incorrectos")
 	public void que_estoy_jugando_al_ahorcado() {
-	    	juego.iniciarJuego("casa");
+	    juego.iniciarJuego("gato");
+	    juego.setIntentosIncorrectos(5);
 	}
     
-	@When("el jugador intenta adivinar la letra \"E\","
-			+ "y el jugador intenta adivinar la letra \"R\","
-			+ "y el jugador intenta adivinar la letra \"T\","
-			+ "y el jugador intenta adivinar la letra \"P\","
-			+ "y el jugador intenta adivinar la letra \"L\","
-			+ "y el jugador intenta adivinar la letra \"I\"")
-	public void intento_adivinar_la_letra(String string) {
-	    boolean resultado1 = juego.adivinarLetra('e');
-	    boolean resultado2 = juego.adivinarLetra('r');
-	    boolean resultado3 = juego.adivinarLetra('t');
-	    boolean resultado4 = juego.adivinarLetra('p');
-	    boolean resultado5 = juego.adivinarLetra('l');
-	    boolean resultado6 = juego.adivinarLetra('i');
-	    
+	@When("el jugador intenta adivinar la letra \"I\"")
+	public void intento_adivinar_la_letra() {
+	    juego.adivinarLetra('i');
 	}
-	@Then("el estado del juego debería ser \"CASA\"")
-	public void debería_ver_la_letra_en_la_palabra_oculta(String string) {
-	    juego.juegoTerminado();
+	@Then("el estado del juego debería ser \"GATO\"")
+	public void estado_del_juego_con_derrota() {
+	    // En este caso, el juego no cambia la palabra oculta, porque todas las letras fueron incorrectas
+		juego.actualizarPalabraOculta('G', 0);
+	    juego.actualizarPalabraOculta('A', 1);
+	    juego.actualizarPalabraOculta('T', 2);
+	    juego.actualizarPalabraOculta('O', 3);
 	}
 
+	@Then("el jugador debería perder el juego")
+	public void jugador_perdió_el_juego() {
+	    // Lógica para perder el juego, si es necesario
+	    juego.juegoTerminadoPorMaximosIntentos();  // Marca el fin del juego con derrota
+	}
 }

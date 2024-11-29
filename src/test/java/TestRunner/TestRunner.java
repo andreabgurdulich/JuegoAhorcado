@@ -1,4 +1,4 @@
-package Interface;
+package TestRunner;
 import org.junit.runner.RunWith;
 import io.cucumber.junit.CucumberOptions;
 import io.cucumber.junit.Cucumber;
@@ -6,7 +6,7 @@ import io.cucumber.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-  features = "Features"//folder name
+		features = "src/test/java/Features"//folder name
 		  ,glue={"StepDefinition"} //package name for step def
 )
 
