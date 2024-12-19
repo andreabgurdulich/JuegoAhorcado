@@ -38,7 +38,7 @@ jobs:
         mvn sonar:sonar \
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
-            -Dsonar.organization=andreabgurdulich
+            -Dsonar.organization=andreabgurdulich \
             -Dsonar.branch.name=master
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
