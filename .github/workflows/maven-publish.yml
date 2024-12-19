@@ -32,9 +32,9 @@ jobs:
 
     # SonarQube Analysis Step
     - name: Run SonarQube Analysis
-        env:
+      env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} # Token de autenticación para SonarQube
-        run: |
+      run: |
           mvn sonar:sonar \
               -Dsonar.host.url=http://your-sonarqube-server \
               -Dsonar.login=${{ secrets.SONAR_TOKEN }}
