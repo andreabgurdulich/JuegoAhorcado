@@ -33,11 +33,12 @@ jobs:
     # SonarQube Analysis Step
     - name: Run SonarQube Analysis
       env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} # Token de autenticación para SonarQube
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} # Token de autenticación para SonarQube
       run: |
-          mvn sonar:sonar \
-              -Dsonar.host.url=https://sonarcloud.io \
-              -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+        mvn sonar:sonar \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
+            -Dsonar.organization=andreabgurdulich
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph
