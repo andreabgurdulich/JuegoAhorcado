@@ -2,6 +2,7 @@ package Juego;
 
 public class Ahorcado {
 	 private String palabraAAdivinar;
+	 //comentario
 	    private StringBuilder palabraOculta;
 	    private int intentosIncorrectos;
 	    private int maxIntentosIncorrectos;
