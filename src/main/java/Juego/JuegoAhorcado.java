@@ -24,7 +24,7 @@ public class JuegoAhorcado {
             while (!juego.juegoTerminado()) {
                 System.out.println("Palabra actual: " + juego.obtenerPalabraOculta());
                 System.out.print("Elige una letra: ");
-                //char letra = scanner.nextLine().charAt(0);
+                char letra = scanner.nextLine().charAt(0);
                 
                 if (juego.adivinarLetra(letra)) {
                     System.out.println("¡Correcto!");

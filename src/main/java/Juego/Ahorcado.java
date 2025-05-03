@@ -65,19 +65,25 @@ public class Ahorcado {
 
 	    public boolean adivinarLetra(char letra) {
 	        boolean letraAdivinada = false;
-	        if (!juegoTerminado()) {
-	            boolean letraCorrecta = false;
-	            for (int i = 0; i < palabraAAdivinar.length(); i++) {
-	                if (palabraAAdivinar.charAt(i) == letra) {
-	                    this.actualizarPalabraOculta(letra, i);
-	                    letraCorrecta = true;
-	                }
-	            }
+	        if (this.getPalabraOculta()==null) {
+	        	
+	        		return letraAdivinada;
+	        	}
+	        else {
+	        	if(!juegoTerminado()){
+		            boolean letraCorrecta = false;
+		            for (int i = 0; i < palabraAAdivinar.length(); i++) {
+		                if (palabraAAdivinar.charAt(i) == letra) {
+		                    this.actualizarPalabraOculta(letra, i);
+		                    letraCorrecta = true;
+		                }
+		            }
 
-	            if (!letraCorrecta) {
-	                intentosIncorrectos++;
-	            }
-	            letraAdivinada = letraCorrecta;
+		            if (!letraCorrecta) {
+		                intentosIncorrectos++;
+		            }
+		            letraAdivinada = letraCorrecta;
+		         }
 	        }
 	        return letraAdivinada;
 	    }
